@@ -48,9 +48,9 @@ return [
             'class' => 'yii\rbac\PhpManager',
             'defaultRoles' => ['admin','editor','client','agent','user'], // here define your roles
             //'authFile' => '/commands/data/rbac.php' //the default path for rbac.php | OLD CONFIGURATION
-            'itemFile' =>       dirname(__DIR__) . $rbacDataDir . '/items.php', //Default path to items.php | NEW CONFIGURATIONS
-            'assignmentFile' => dirname(__DIR__) . $rbacDataDir . '/assignments.php', //Default path to assignments.php | NEW CONFIGURATIONS
-	    'ruleFile' =>       dirname(__DIR__) . $rbacDataDir . '/rules.php', //Default path to rules.php | NEW CONFIGURATIONS
+            'itemFile' =>       dirname(dirname(__DIR__)) . $rbacDataDir . '/items.php', //Default path to items.php | NEW CONFIGURATIONS
+            'assignmentFile' => dirname(dirname(__DIR__)) . $rbacDataDir . '/assignments.php', //Default path to assignments.php | NEW CONFIGURATIONS
+	    'ruleFile' =>       dirname(dirname(__DIR__)) . $rbacDataDir . '/rules.php', //Default path to rules.php | NEW CONFIGURATIONS
         ],
         'user' => [
             'identityClass' => 'dektrium\user\models\User',
