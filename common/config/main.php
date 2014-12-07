@@ -1,8 +1,8 @@
 <?php
 
-//$mdmAdminPath = 'admin'; // you can change the web url of mdm\yii2-admin to manage rbac.
+$mdmAdminPath = 'admin'; // you can change the web url of mdm\yii2-admin to manage rbac.
 $rbacDataDir = 'console/rbacdata'; // if you change it, make sure you have created a directory(with write permission) as new path.
-$mdmAdminRouteEnabled = true; // or set it false
+$mdmAdminRouteEnabled = true; // or set it false to disable route menu
 
 
 $mdmAdminRoutePath = null;
@@ -23,8 +23,7 @@ return [
             'cost' => 12,
             'admins' => ['admin']
         ],
-//        $mdmAdminPath => [
-        'admin' => [
+        $mdmAdminPath => [
             'class' => 'mdm\admin\Module',
             'layout' => 'left-menu', // avaliable value 'left-menu', 'right-menu' and 'top-menu'
 //            'layout' => 'right-menu', // avaliable value 'left-menu', 'right-menu' and 'top-menu'
@@ -57,7 +56,7 @@ return [
             'identityClass' => 'dektrium\user\models\User',
         ],
         'wtsecure' => [
-            'class' =>  'simpleClass\SimpleSecurity',
+            'class' =>  'azraf\simpleapp\classes\SimpleSecurity',
         ],
         'urlManager' => [
             'enablePrettyUrl' => true,
@@ -68,13 +67,13 @@ return [
             // 'db' => 'mydb',  // the application component ID of the DB connection. Defaults to 'db'.
             // 'sessionTable' => 'my_session', // session table name. Defaults to 'session'.
         ],
-//        'view' => [
-//            'theme' => [
-//                'pathMap' => [
-//                    '@dektrium/user/views' => '/frontend/views/user'
-//                ],
-//            ],
-//        ],
+        'view' => [
+            'theme' => [
+                'pathMap' => [
+                    '@dektrium/user/views' => '//frontend/views/user'
+                ],
+            ],
+        ],
         'i18n' => [
             'translations' => [
                         '*' => [
@@ -94,9 +93,7 @@ return [
     'as access' => [
         'class' => 'mdm\admin\components\AccessControl',
         'allowActions' => [
-            'admin/*',  // ::: IMPORTANT :::: Make it disable after configuring the USER Roles/Permissions
-//            $mdmAdminPath.'/*',  // ::: IMPORTANT :::: Make it disable after configuring the USER Roles/Permissions
-            'user/*', // add or remove allowed actions to this list
+            $mdmAdminPath.'/*',  // ::: IMPORTANT :::: Make it disable after configuring the USER Roles/Permissions
             'user/index', // add or remove allowed actions to this list
             'user/login', // add or remove allowed actions to this list
             'user/security/login', // add or remove allowed actions to this list
