@@ -1,6 +1,7 @@
+Guideline
+-------------------
 
-admin
-admin321
+Please check http://blog.makewebsmart.com/yii2-advancedapp-with-yii2-admin-user-and-few-more/279 for the insturction and discussion. 
 
 
 Yii 2 Advanced Application Template
