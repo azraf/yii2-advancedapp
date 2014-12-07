@@ -1,7 +1,7 @@
 <?php
 
 $mdmAdminPath = 'admin'; // you can change the web url of mdm\yii2-admin to manage rbac.
-$rbacDataDir = 'console/rbacdata'; // if you change it, make sure you have created a directory(with write permission) as new path.
+$rbacDataDir = '/console/rbacdata'; // if you change it, make sure you have created a directory(with write permission) as new path.
 $mdmAdminRouteEnabled = true; // or set it false to disable route menu
 
 
