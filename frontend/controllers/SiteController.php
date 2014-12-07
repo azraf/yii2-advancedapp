@@ -2,10 +2,12 @@
 namespace frontend\controllers;
 
 use Yii;
-use common\models\LoginForm;
-use frontend\models\PasswordResetRequestForm;
-use frontend\models\ResetPasswordForm;
-use frontend\models\SignupForm;
+//use common\models\LoginForm;
+use dektrium\user\models\LoginForm;
+use dektrium\user\models\RecoveryRequestForm as PasswordResetRequestForm;
+use dektrium\user\models\RecoveryForm as ResetPasswordForm;
+use dektrium\user\models\RegistrationForm as SignupForm;
+
 use frontend\models\ContactForm;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
@@ -73,6 +75,7 @@ class SiteController extends Controller
     public function actionLogin()
     {
         if (!\Yii::$app->user->isGuest) {
+
             return $this->goHome();
         }
 
@@ -80,7 +83,7 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
         } else {
-            return $this->render('login', [
+            return $this->render('/user/security/login', [
                 'model' => $model,
             ]);
         }
@@ -118,18 +121,10 @@ class SiteController extends Controller
 
     public function actionSignup()
     {
-        $model = new SignupForm();
-        if ($model->load(Yii::$app->request->post())) {
-            if ($user = $model->signup()) {
-                if (Yii::$app->getUser()->login($user)) {
-                    return $this->goHome();
-                }
-            }
+        if (!\Yii::$app->user->isGuest) {
+            return $this->goHome();
         }
-
-        return $this->render('signup', [
-            'model' => $model,
-        ]);
+        return $this->redirect(['/user/registration/register']);
     }
 
     public function actionRequestPasswordReset()
