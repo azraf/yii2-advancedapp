@@ -56,7 +56,7 @@ return [
             'identityClass' => 'dektrium\user\models\User',
         ],
         'wtsecure' => [
-            'class' =>  '@azraf/simpleapp/classes/SimpleSecurity',
+            'class' =>  'azraf\simpleapp\classes\SimpleSecurity',
         ],
         'urlManager' => [
             'enablePrettyUrl' => true,
